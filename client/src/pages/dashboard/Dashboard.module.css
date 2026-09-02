@@ -1,0 +1,12 @@
+
+.dashboardContainer {
+    width: 100dvw;
+}
+
+.sensorCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: min(190px);
+    width: 100%;
+}
