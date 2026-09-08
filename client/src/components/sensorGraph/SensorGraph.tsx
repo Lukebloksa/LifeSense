@@ -6,6 +6,6 @@ import Chartjs from 'chart.js';
 
 function SensorGraph({ data, labels }: { data: number[]; labels: string[] }) {
     return (
-
+        <canvas id="sensorGraph" aria-label="Sensor Graph" role="img"></canvas>
     )
 }
