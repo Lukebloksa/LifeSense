@@ -10,3 +10,10 @@
     gap: min(190px);
     width: 100%;
 }
+.sensorGraphContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: min(190px);
+    width: 100%;
+}
