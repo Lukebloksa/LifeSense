@@ -11,6 +11,12 @@
     max-height: 220px;
 }
 
+.sensorGraphContainer svg,
+.sensorGraphContainer svg:focus,
+.sensorGraphContainer *:focus {
+    outline: none !important;
+}
+
 .axis {
     color: #000000;
 }

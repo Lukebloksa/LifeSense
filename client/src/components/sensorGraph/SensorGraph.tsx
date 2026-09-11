@@ -24,8 +24,8 @@ function SensorGraph({ data }: { data;}) {
             <div className={styles.graphHeader}>
                 <span className={styles.graphTitle}>Temperature</span>
             </div>
-            <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={mockData}>
+            <ResponsiveContainer className={styles.sensorGraphContainer} width="100%" height="100%">
+                <LineChart data={mockData} >
                     <CartesianGrid stroke="#000000" strokeDasharray="3 3" opacity={0.4} />
 
                     <XAxis dataKey="time" stroke="#000000" />

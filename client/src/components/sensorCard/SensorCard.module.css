@@ -9,6 +9,7 @@
     min-height: 120px;
     height: 11vw;
     max-height: 220px;
+    padding: 2%;
 }
 .sensorCardInformation {
 
@@ -23,5 +24,7 @@
 
 }
 .sensorCardValueContainer {
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

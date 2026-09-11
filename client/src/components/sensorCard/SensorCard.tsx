@@ -16,12 +16,12 @@ function SensorCard({title, value, unit, isDark} : SensorCardProps) {
                 </span>
                 <div className={styles.sensorCardValueContainer}>
                     <div className={styles.sensorCardValueContainer}>
-                        <span className={styles.sensorCardValue} aria-placeholder="Description">
+                        <strong className={styles.sensorCardValue} aria-placeholder="Description">
                             {value}
-                        </span>
-                        <span className={styles.sensorCardUnit} aria-placeholder="Description">
+                        </strong>
+                        <strong className={styles.sensorCardUnit} aria-placeholder="Description">
                             {unit}
-                        </span>
+                        </strong>
                     </div>
                     <span className={styles.sensorCardDifference} aria-placeholder="Description">
                         {unit}
