@@ -1,5 +1,30 @@
 .sensorCard {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    border-radius: 24px;
+    background-color: #31AE4D;
+    min-width: 200px;
+    width: 20vw;
+    max-width: 400px;
+    min-height: 120px;
+    height: 11vw;
+    max-height: 220px;
+    padding: 2%;
+}
+.sensorCardInformation {
+
+}
+.sensorCardHeader {
+
+}
+.sensorCardDifference {
+
+}
+.sensorCardValue {
+
+}
+.sensorCardValueContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

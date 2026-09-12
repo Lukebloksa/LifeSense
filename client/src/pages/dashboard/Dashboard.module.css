@@ -1,0 +1,26 @@
+
+.dashboardContainer {
+    width: 100%;
+    min-height: 100vh;
+    background: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 24px 48px;
+    box-sizing: border-box;
+}
+
+.sensorCardContainer,
+.sensorGraphContainer {
+    width: min(1180px, 100%);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 36px;
+    justify-content: center;
+    align-items: end;
+}
+
+.sensorGraphContainer {
+    margin-top: 12px;
+    align-items: start;
+}

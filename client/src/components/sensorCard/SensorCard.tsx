@@ -10,15 +10,20 @@ interface SensorCardProps {
 function SensorCard({title, value, unit, isDark} : SensorCardProps) {
     return (
         <div className={styles.sensorCard}>
-            <div className="sensor-card-information">
+            <div className={styles.sensorCardInformation}>
                 <span className="sensor-card-header" aria-placeholder="Sensor Card Information">
                     {title}
                 </span>
-                <div className="sensor-card-description">
-                    <span className="sensor-card-value" aria-placeholder="Description">
-                        {value}
-                    </span>
-                    <span className="sensor-card-difference" aria-placeholder="Description">
+                <div className={styles.sensorCardValueContainer}>
+                    <div className={styles.sensorCardValueContainer}>
+                        <strong className={styles.sensorCardValue} aria-placeholder="Description">
+                            {value}
+                        </strong>
+                        <strong className={styles.sensorCardUnit} aria-placeholder="Description">
+                            {unit}
+                        </strong>
+                    </div>
+                    <span className={styles.sensorCardDifference} aria-placeholder="Description">
                         {unit}
                     </span>
                 </div>

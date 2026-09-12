@@ -1,0 +1,22 @@
+.graphConteiner {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    background-color: #ffffff;
+    min-width: 200px;
+    width: 20vw;
+    max-width: 400px;
+    min-height: 120px;
+    height: 11vw;
+    max-height: 220px;
+}
+
+.sensorGraphContainer svg,
+.sensorGraphContainer svg:focus,
+.sensorGraphContainer *:focus {
+    outline: none !important;
+}
+
+.axis {
+    color: #000000;
+}
