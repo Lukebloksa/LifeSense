@@ -1,0 +1,65 @@
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: transparent;
+}
+
+.card {
+    width: 640px;
+    max-width: 92%;
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 36px 44px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.title {
+    text-align: center;
+    margin: 0 0 24px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #222;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.form input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.actions button {
+    background: #262626;
+    color: #fff;
+    padding: 10px 64px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+}
+
+.link {
+    color: #1E1E1E;
+}
+
+.authPrompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}

@@ -1,30 +1,38 @@
 import Button from "../../../components/ui/button/Button";
 import Input from "../../../components/ui/input/Input";
-import styles from "./LoginPage.module.css";
+import styles from "./RegisterPage.module.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 
-export function LoginPage() {
+export function RegisterPage() {
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const { register } = useAuth();
 
-    const handleLogin = async () => {
+    const handleRegister = async () => {
         try {
-            await login(email, password);
+            await register(username, email, password);
             navigate("/dashboard");
         } catch (error) {
-            console.error("Login failed:", error);
+            console.error("Registration failed:", error);
         }
     };
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.card}>
-                <h2 className={styles.title}>Log In</h2>
+                <h2 className={styles.title}>Register</h2>
                 <div className={styles.form}>
+                    <Input
+                        label="Username"
+                        placeholder="Enter your username"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
                     <Input
                         label="Email"
                         placeholder="Enter your email"
@@ -40,11 +48,11 @@ export function LoginPage() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className={styles.actions}>
-                        <Button onClick={handleLogin}>Sign In</Button>
+                        <Button onClick={handleRegister}>Register</Button>
                         <p className={styles.authPrompt}>
-                            Don't have an account?{' '}
-                            <Link className={styles.link} to="/register">
-                                Register here
+                            Already have an account?{' '}
+                            <Link className={styles.link} to="/login">
+                                Sign in here
                             </Link>
                         </p>
                     </div>
@@ -53,4 +61,4 @@ export function LoginPage() {
         </div>
     )
 }
-export default LoginPage;
+export default RegisterPage;

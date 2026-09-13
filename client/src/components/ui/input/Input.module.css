@@ -1,7 +1,19 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
 .input {
-    border-radius: 8px;
+    border-style: solid;
+    border-radius: 12px;
+    border-color: #D9D9D9;
+    border-width: 1px;
+    padding: 0 0 0 10px;
     min-height: 40px;
     max-height: 60px;
     min-width: 468px;
     max-width: 702px;
+    color: #B3B3B3;
+
 }
