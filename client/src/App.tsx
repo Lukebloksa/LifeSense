@@ -1,10 +1,25 @@
 import {useState} from 'react'
-import Dasboard from './pages/dashboard/Dashboard'
+
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
 import './App.css'
+import Dashboard from "./pages/dashboard/Dashboard";
+import LoginPage from './pages/auth/login/LoginPage'
+import RegisterPage from './pages/auth/register/RegisterPage'
 
 function App() {
     return (
-        <Dasboard />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Navigate to="/register" replace />} />
+
+                <Route path="/login" element={<LoginPage />} />
+
+                <Route path="/dashboard" element={<Dashboard />} />
+
+                <Route path="/register" element={<RegisterPage />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 

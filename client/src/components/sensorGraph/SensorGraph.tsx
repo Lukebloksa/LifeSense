@@ -16,7 +16,7 @@ export interface DataPoint {
 }
 
 type SensorGraphProps = {
-    data: DataPoint[]; // Pole naměřených hodnot v čase
+    data: DataPoint[];
     unit: string;
     title: string;
 };
