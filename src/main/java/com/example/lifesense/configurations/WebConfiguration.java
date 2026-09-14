@@ -16,9 +16,4 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .allowedHeaders("**")
                 .allowCredentials(true);
     }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(); Todo: add interceptor for authentication and authorization
-    }
 }
