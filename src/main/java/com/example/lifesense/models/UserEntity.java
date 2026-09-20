@@ -1,9 +1,6 @@
 package com.example.lifesense.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * UserEntity represents a user of the application. Contains information about the user
@@ -13,7 +10,7 @@ import jakarta.persistence.Id;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36)
     private String id;
 
