@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthService authService;
@@ -26,7 +26,12 @@ public class AuthController {
     @PostMapping("/registration")
     public String registration(@RequestBody UserEntity user) {
         authService.registration(user);
-        String accessToken = jwtServiceImpl.generateToken(user.getEmail());
-        return accessToken;
+        return jwtServiceImpl.generateToken(user.getEmail());
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody UserEntity user) {
+        authService.login(user.getEmail(), user.getPassword());
+        return jwtServiceImpl.generateToken(user.getEmail());
     }
 }

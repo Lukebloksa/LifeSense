@@ -14,10 +14,21 @@ export function RegisterPage() {
 
     const handleRegister = async () => {
         try {
-            await register(username, email, password);
-            navigate("/dashboard");
+            const res = await fetch('http://localhost:8080/api/auth/registration', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            if (!res.ok) {
+                throw new Error('Registration failed');
+            }
+
+            const token = await res.text();
+            localStorage.setItem('token', token);
+            navigate('/dashboard');
         } catch (error) {
-            console.error("Registration failed:", error);
+            console.error('Registration failed:', error);
         }
     };
 
