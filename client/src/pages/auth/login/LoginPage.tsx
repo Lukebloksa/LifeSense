@@ -1,7 +1,7 @@
 import Button from "../../../components/ui/button/Button";
 import Input from "../../../components/ui/input/Input";
 import styles from "./LoginPage.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 
@@ -11,12 +11,32 @@ export function LoginPage() {
     const navigate = useNavigate();
     const { login } = useAuth();
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/dashboard', { replace: true });
+        }
+    }, [navigate]);
+
     const handleLogin = async () => {
         try {
-            await login(email, password);
-            navigate("/dashboard");
+            const res = await fetch('http://localhost:8080/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!res.ok) {
+                throw new Error('Login failed');
+            }
+
+            const token = await res.text();
+
+            localStorage.setItem('token', token);
+
+            navigate('/dashboard');
         } catch (error) {
-            console.error("Login failed:", error);
+            console.error('Login failed:', error);
         }
     };
 
