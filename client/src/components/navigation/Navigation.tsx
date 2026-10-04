@@ -1,5 +1,5 @@
 import styles from "./Navigation.module.css"
-import lightLogo from "../../assets/logo/lifesense_logo_light.png"
+import lightLogo from "../../assets/logo/lifesense_logo_light-removebg-preview.png"
 
 function Navigation() {
     return (
@@ -13,3 +13,5 @@ function Navigation() {
         </div>
     )
 }
+
+export default Navigation;

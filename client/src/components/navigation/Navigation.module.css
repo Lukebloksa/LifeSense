@@ -1,0 +1,12 @@
+.navigationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #2D2D2D;
+    width: 100%;
+}
+.navigationLogoImage {
+    max-width: 100%;
+    height: auto;
+    width: 392px;
+}

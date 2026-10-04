@@ -4,6 +4,7 @@ import styles from "./Dashboard.module.css"
 
 import SensorCard from "../../components/sensorCard/SensorCard"
 import SensorGraph, {DataPoint} from "../../components/sensorGraph/SensorGraph"
+import Navigation from "../../components/navigation/Navigation"
 
 export interface SensorData {
     id: string | number;
@@ -33,24 +34,40 @@ export default function Dashboard() {
         { timestamp: '13:00', value: 23 },
         { timestamp: '14:00', value: 25 },
         { timestamp: '15:00', value: 22 },
+        { timestamp: '12:00', value: 21 },
+        { timestamp: '13:00', value: 23 },
+        { timestamp: '14:00', value: 25 },
+        { timestamp: '15:00', value: 22 },
+        { timestamp: '12:00', value: 21 },
+        { timestamp: '13:00', value: 23 },
+        { timestamp: '14:00', value: 25 },
+        { timestamp: '15:00', value: 22 },
+        { timestamp: '12:00', value: 21 },
+        { timestamp: '13:00', value: 23 },
+        { timestamp: '14:00', value: 25 },
+        { timestamp: '15:00', value: 22 },
+        { timestamp: '12:00', value: 21 },
+        { timestamp: '13:00', value: 23 },
+        { timestamp: '14:00', value: 25 },
+        { timestamp: '15:00', value: 22 },
+        { timestamp: '12:00', value: 21 },
+        { timestamp: '13:00', value: 23 },
+        { timestamp: '14:00', value: 25 },
+        { timestamp: '15:00', value: 22 },
     ]);
 
-    // Přidání nového měření na konec
     const addMeasurement = (time: string, val: number) => {
         setHistory((prev) => [...prev, { timestamp: time, value: val }]);
     };
 
-    // Smazání nejstaršího (prvního) měření
     const removeOldest = () => {
         setHistory((prev) => prev.slice(1));
     };
 
-    // Smazání nejnovějšího (posledního) měření
     const removeNewest = () => {
         setHistory((prev) => prev.slice(0, -1));
     };
 
-    // Typický IoT scénář: držet max 10 posledních hodnot (nové přidat, nejstarší zahodit)
     const pushNewAndKeepMax = (time: string, val: number) => {
         setHistory((prev) => {
             const updated = [...prev, { timestamp: time, value: val }];
@@ -60,7 +77,7 @@ export default function Dashboard() {
     return (
         <div className={styles.dashboardContainer}>
             <div className={styles.dashboardNavbar}>
-
+                <Navigation />
             </div>
             <div className={styles.sensorCardContainer}>
                 {initialSensors.map((sensor) => (

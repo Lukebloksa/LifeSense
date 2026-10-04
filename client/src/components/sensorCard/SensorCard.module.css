@@ -12,16 +12,19 @@
     padding: 2%;
 }
 .sensorCardInformation {
-
+    font-size: 15px;
 }
 .sensorCardHeader {
 
 }
 .sensorCardDifference {
-
+    font-size: 15px;
 }
 .sensorCardValue {
-
+    font-size: 32px;
+}
+.sensorCardUnit {
+    font-size: 32px;
 }
 .sensorCardValueContainer {
     display: flex;
