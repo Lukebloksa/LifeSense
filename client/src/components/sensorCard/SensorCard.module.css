@@ -9,7 +9,7 @@
     min-height: 120px;
     height: 11vw;
     max-height: 220px;
-    padding: 2%;
+    padding: 5% 3% 5% 3%;
 }
 .sensorCardInformation {
     font-size: 15px;
@@ -20,12 +20,10 @@
 .sensorCardDifference {
     font-size: 15px;
 }
-.sensorCardValue {
-    font-size: 32px;
+.sensorCardValue, .sensorCardUnit {
+    font-size: 30px;
 }
-.sensorCardUnit {
-    font-size: 32px;
-}
+
 .sensorCardValueContainer {
     display: flex;
     flex-direction: row;
