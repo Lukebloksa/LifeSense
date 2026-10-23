@@ -4,6 +4,7 @@ import styles from "./Dashboard.module.css"
 
 import SensorCard from "../../components/sensorCard/SensorCard"
 import SensorGraph, {DataPoint} from "../../components/sensorGraph/SensorGraph"
+import Navigation from "../../components/navigation/Navigation"
 
 export interface SensorData {
     id: string | number;
@@ -29,28 +30,44 @@ const mockSensorData: SensorData[] = [
 export default function Dashboard() {
 
     const [history, setHistory] = useState<DataPoint[]>([
-        { timestamp: '12:00', value: 21 },
-        { timestamp: '13:00', value: 23 },
-        { timestamp: '14:00', value: 25 },
-        { timestamp: '15:00', value: 22 },
+        { timestamp: '00:00', value: 19.8 },
+        { timestamp: '01:00', value: 19.4 },
+        { timestamp: '02:00', value: 19.1 },
+        { timestamp: '03:00', value: 18.9 },
+        { timestamp: '04:00', value: 18.7 },
+        { timestamp: '05:00', value: 18.8 },
+        { timestamp: '06:00', value: 19.2 },
+        { timestamp: '07:00', value: 20.1 },
+        { timestamp: '08:00', value: 21.3 },
+        { timestamp: '09:00', value: 22.4 },
+        { timestamp: '10:00', value: 23.2 },
+        { timestamp: '11:00', value: 23.8 },
+        { timestamp: '12:00', value: 24.1 },
+        { timestamp: '13:00', value: 24.6 },
+        { timestamp: '14:00', value: 25.2 },
+        { timestamp: '15:00', value: 25.5 },
+        { timestamp: '16:00', value: 25.1 },
+        { timestamp: '17:00', value: 24.6 },
+        { timestamp: '18:00', value: 23.8 },
+        { timestamp: '19:00', value: 22.9 },
+        { timestamp: '20:00', value: 22.1 },
+        { timestamp: '21:00', value: 21.4 },
+        { timestamp: '22:00', value: 20.7 },
+        { timestamp: '23:00', value: 20.2 },
     ]);
 
-    // Přidání nového měření na konec
     const addMeasurement = (time: string, val: number) => {
         setHistory((prev) => [...prev, { timestamp: time, value: val }]);
     };
 
-    // Smazání nejstaršího (prvního) měření
     const removeOldest = () => {
         setHistory((prev) => prev.slice(1));
     };
 
-    // Smazání nejnovějšího (posledního) měření
     const removeNewest = () => {
         setHistory((prev) => prev.slice(0, -1));
     };
 
-    // Typický IoT scénář: držet max 10 posledních hodnot (nové přidat, nejstarší zahodit)
     const pushNewAndKeepMax = (time: string, val: number) => {
         setHistory((prev) => {
             const updated = [...prev, { timestamp: time, value: val }];
@@ -60,7 +77,7 @@ export default function Dashboard() {
     return (
         <div className={styles.dashboardContainer}>
             <div className={styles.dashboardNavbar}>
-
+                <Navigation />
             </div>
             <div className={styles.sensorCardContainer}>
                 {initialSensors.map((sensor) => (
