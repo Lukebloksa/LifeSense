@@ -64,21 +64,23 @@
 
 .navigationLinks {
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
 }
 
 @media (max-width: 768px) {
     .navigationLinks {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
+        position: relative;
+        top: auto;
+        left: auto;
+        width: auto;
+        background-color: transparent;
         flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        display: none;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        align-items: flex-end;
+        padding: 0;
+        display: flex;
+        box-shadow: none;
     }
 
     .linksVisible {
