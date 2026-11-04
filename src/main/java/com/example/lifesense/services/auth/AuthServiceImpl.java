@@ -1,9 +1,7 @@
 package com.example.lifesense.services.auth;
 
-import com.example.lifesense.configurations.SecurityConfig;
 import com.example.lifesense.models.UserEntity;
-import com.example.lifesense.repositories.auth.UserRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.lifesense.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.lifesense.repositories.auth;
+package com.example.lifesense.repositories;
 
 import com.example.lifesense.models.UserEntity;
 import jakarta.transaction.Transactional;
