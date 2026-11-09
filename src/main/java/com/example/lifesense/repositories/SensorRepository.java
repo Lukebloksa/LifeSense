@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SensorRepository extends JpaRepository<SensorEntity, Long> {
 
-    List<SensorEntity> findByUserId(String userId);
+    List<SensorEntity> findByUserId_Id(String userId);
 }
