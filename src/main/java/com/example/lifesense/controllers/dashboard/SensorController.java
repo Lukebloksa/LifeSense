@@ -3,10 +3,7 @@ package com.example.lifesense.controllers.dashboard;
 import com.example.lifesense.models.SensorEntity;
 import com.example.lifesense.repositories.SensorRepository;
 import com.example.lifesense.services.dashboard.SensorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,12 +11,14 @@ import java.util.List;
 @RequestMapping("/api/dashboard")
 public class SensorController {
 
-    private SensorService sensorService;
+    private final SensorService sensorService;
 
-    private SensorRepository sensorRepository;
+    public SensorController(SensorService sensorService) {
+        this.sensorService = sensorService;
+    }
 
-    @GetMapping("/sensors")
-    public List<SensorEntity> getSensors(@RequestBody String userId) {
+    @GetMapping("/sensors/{userId}")
+    public List<SensorEntity> getSensors(@PathVariable String userId) {
         return sensorService.getSensors(userId);
     }
 }
