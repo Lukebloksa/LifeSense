@@ -27,7 +27,7 @@ public class SensorServiceImpl implements SensorService {
     @Override
     public List<SensorEntity> getSensors(String userId) {
         List<SensorEntity> sensors = new ArrayList<>();
-        sensors.addAll(sensorRepository.findByUserId(userId));
+        sensors.addAll(sensorRepository.findByUserId_Id(userId));
         return sensors;
     }
 }

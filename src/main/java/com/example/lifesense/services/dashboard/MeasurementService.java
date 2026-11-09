@@ -9,9 +9,10 @@ public interface MeasurementService {
     /*
      * Gets latest measurements for every sensor.
      */
-    List<MeasurementEntity> getMeasurements(String sensorId);
+    MeasurementEntity getLatestMeasurements(String userId, String sensorId);
 
     /*
-     *
+     * Gets measurement from sensor
      */
+    MeasurementEntity getMeasurement(String userId, String sensorId);
 }

@@ -26,9 +26,15 @@ public class MeasurementServiceImpl implements MeasurementService {
     }
 
     @Override
-    public List<MeasurementEntity> getMeasurements(String sensorId) {
-        List<MeasurementEntity> measurements = new ArrayList<>();
+    public MeasurementEntity getLatestMeasurements(String userId, String sensorId) {
+        MeasurementEntity measurements = new MeasurementEntity();
+        measurementRepository.findByUserId_IdAndSensorId_Id(userId, sensorId);
+        return measurements;
+    }
 
+    @Override
+    public MeasurementEntity getMeasurement(String userId, String sensorId) {
+        MeasurementEntity measurements = new MeasurementEntity();
         return measurements;
     }
 
