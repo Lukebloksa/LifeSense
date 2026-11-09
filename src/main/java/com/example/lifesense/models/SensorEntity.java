@@ -1,6 +1,7 @@
 package com.example.lifesense.models;
 
 import jakarta.persistence.*;
+import lombok.experimental.SuperBuilder;
 
 /**
     * SensorEntity represents a sensor that belongs to a user. It contains information about the sensor's name, type, and unit of measurement.
@@ -23,6 +24,8 @@ public class SensorEntity {
     private String type;
 
     private String unit;
+
+    public String apiKey;
 
     public SensorEntity(String id, UserEntity userId, String name, String type, String unit) {
         this.id = id;
