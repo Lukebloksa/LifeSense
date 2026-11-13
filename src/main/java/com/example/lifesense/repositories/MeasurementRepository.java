@@ -4,5 +4,10 @@ import com.example.lifesense.models.MeasurementEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MeasurementRepository extends JpaRepository<MeasurementEntity, Long> {
-    MeasurementEntity findByUserId_IdAndSensorId_Id(String userId, String sensorId);
+
+    MeasurementEntity findBySensorId_User_IdAndSensorId_Id(String userId, String sensorId);
+
+    default MeasurementEntity findByUserId_IdAndSensorId_Id(String userId, String sensorId) {
+        return findBySensorId_User_IdAndSensorId_Id(userId, sensorId);
+    }
 }
