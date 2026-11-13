@@ -15,9 +15,9 @@ public class SensorEntity {
     @Column(length = 36)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity userId;
+    private UserEntity user;
 
     private String name;
 
@@ -25,18 +25,19 @@ public class SensorEntity {
 
     private String unit;
 
-    public String apiKey;
+    @Column(name = "api_key")
+    private String apiKey;
 
-    public SensorEntity(String id, UserEntity userId, String name, String type, String unit) {
+    public SensorEntity() {
+    }
+
+    public SensorEntity(String id, UserEntity user, String name, String type, String unit, String apiKey) {
         this.id = id;
-        this.userId = userId;
+        this.user = user;
         this.name = name;
         this.type = type;
         this.unit = unit;
-    }
-
-    public SensorEntity() {
-
+        this.apiKey = apiKey;
     }
 
     public String getId() {
@@ -47,12 +48,12 @@ public class SensorEntity {
         this.id = id;
     }
 
-    public UserEntity getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(UserEntity userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -77,5 +78,13 @@ public class SensorEntity {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 }

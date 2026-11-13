@@ -1,7 +1,6 @@
 package com.example.lifesense.controllers.dashboard;
 
 import com.example.lifesense.models.SensorEntity;
-import com.example.lifesense.repositories.SensorRepository;
 import com.example.lifesense.services.dashboard.SensorService;
 import org.springframework.web.bind.annotation.*;
 
