@@ -5,4 +5,4 @@ password = "myapp"
 schemas = ["public"]
 
 [flyway]
-locations = ["filesystem:sql"]
+locations = ["filesystem:../../src/main/resources/db/migra"]
