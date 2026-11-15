@@ -1,0 +1,8 @@
+[environments.default]
+url = "jdbc:mysql://localhost:3307/lifesense_db"
+user = "root"
+password = "myapp"
+schemas = ["public"]
+
+[flyway]
+locations = ["filesystem:sql"]
