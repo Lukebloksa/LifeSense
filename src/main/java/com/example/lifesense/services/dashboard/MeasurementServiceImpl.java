@@ -5,6 +5,7 @@ import com.example.lifesense.models.SensorEntity;
 import com.example.lifesense.repositories.MeasurementRepository;
 import com.example.lifesense.repositories.SensorRepository;
 import com.example.lifesense.repositories.UserRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,9 +34,14 @@ public class MeasurementServiceImpl implements MeasurementService {
     }
 
     @Override
-    public MeasurementEntity getMeasurement(String userId, String sensorId) {
-        MeasurementEntity measurements = new MeasurementEntity();
-        return measurements;
+    public List<MeasurementEntity> getWeeklyMeasurements(String userId, String sensorId) {
+        return List.of();
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 * * * *")
+    public void getMeasurementSummary(String userId, String sensorId) {
+
     }
 
 }
