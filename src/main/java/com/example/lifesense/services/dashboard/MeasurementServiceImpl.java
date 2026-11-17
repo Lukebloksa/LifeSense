@@ -1,14 +1,13 @@
 package com.example.lifesense.services.dashboard;
 
 import com.example.lifesense.models.MeasurementEntity;
-import com.example.lifesense.models.SensorEntity;
 import com.example.lifesense.repositories.MeasurementRepository;
+import com.example.lifesense.repositories.MeasurementSummaryRepository;
 import com.example.lifesense.repositories.SensorRepository;
 import com.example.lifesense.repositories.UserRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,11 +17,14 @@ public class MeasurementServiceImpl implements MeasurementService {
 
     private final MeasurementRepository measurementRepository;
 
+    private final MeasurementSummaryRepository measurementSummaryRepository;
+
     private final SensorRepository sensorRepository;
 
-    public MeasurementServiceImpl(UserRepository userRepository, MeasurementRepository measurementRepository, SensorRepository sensorRepository) {
+    public MeasurementServiceImpl(UserRepository userRepository, MeasurementRepository measurementRepository, MeasurementSummaryRepository measurementSummaryRepository, SensorRepository sensorRepository) {
         this.userRepository = userRepository;
         this.measurementRepository = measurementRepository;
+        this.measurementSummaryRepository = measurementSummaryRepository;
         this.sensorRepository = sensorRepository;
     }
 
@@ -40,8 +42,8 @@ public class MeasurementServiceImpl implements MeasurementService {
 
     @Override
     @Scheduled(cron = "0 0 * * * *")
-    public void getMeasurementSummary(String userId, String sensorId) {
-
+    public void getMeasurementSummary() {
+        measurementSummaryRepository.calculateMeasurementSummary();
     }
 
 }

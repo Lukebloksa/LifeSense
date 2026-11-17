@@ -1,8 +1,6 @@
 package com.example.lifesense.services.dashboard;
 
 import com.example.lifesense.models.MeasurementEntity;
-import com.example.lifesense.models.MeasurementSummaryEntity;
-import com.example.lifesense.models.SensorEntity;
 
 import java.util.List;
 
@@ -20,5 +18,5 @@ public interface MeasurementService {
     /*
      * Calculates measurement summary for a given user and sensor.
      */
-    void getMeasurementSummary(String userId, String sensorId);
+    void getMeasurementSummary();
 }
