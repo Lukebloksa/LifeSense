@@ -1,6 +1,7 @@
 package com.example.lifesense.services.dashboard;
 
 import com.example.lifesense.models.MeasurementEntity;
+import com.example.lifesense.models.MeasurementSummaryEntity;
 import com.example.lifesense.repositories.MeasurementRepository;
 import com.example.lifesense.repositories.MeasurementSummaryRepository;
 import com.example.lifesense.repositories.SensorRepository;
@@ -36,9 +37,8 @@ public class MeasurementServiceImpl implements MeasurementService {
     }
 
     @Override
-    public List<MeasurementEntity> getWeeklyMeasurements(String userId, String sensorId) {
-
-        return List.of();
+    public List<MeasurementSummaryEntity> getWeeklyMeasurements(String userId, String sensorId) {
+        return measurementSummaryRepository.weeklyMeasurements(userId, sensorId);
     }
 
     @Override

@@ -11,4 +11,9 @@ public interface SensorService {
      */
     List<SensorEntity> getSensors(String userId);
 
+    /*
+     * Creates a new sensor for user
+     */
+    SensorEntity createSensor(String userId, SensorEntity sensor);
+
 }

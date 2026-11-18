@@ -1,8 +1,10 @@
 package com.example.lifesense.repositories;
 
 import com.example.lifesense.models.MeasurementSummaryEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -10,18 +12,10 @@ import java.util.List;
 public interface MeasurementSummaryRepository extends JpaRepository<MeasurementSummaryEntity, Long> {
 
     @Modifying
-    @Query("INSERT INTO measurement_summary_entity (sensor_id, avg_value, min_value, max_value, measured_at_per_hour)\n" +
-            "SELECT sensor_id, AVG(value), MIN(value), MAX(value), DATE_FORMAT(measured_at, '%Y-%m-%d %H:00:00')\n" +
-            "FROM measurement_entity\n" +
-            "WHERE measured_at >= DATE_SUB(NOW(), INTERVAL 1 HOUR)\n" +
-            "GROUP BY sensor_id, DATE_FORMAT(measured_at, '%Y-%m-%d %H:00:00');\n")
-    MeasurementSummaryEntity calculateMeasurementSummary();
+    @Transactional
+    @Query(value = "INSERT INTO measurement_summary_entity (sensor_id, avg_value, min_value, max_value, measured_at_per_hour) SELECT sensor_id, AVG(value), MIN(value), MAX(value), DATE_FORMAT(measured_at, '%Y-%m-%d %H:00:00') FROM measurement_entity WHERE measured_at >= DATE_SUB(NOW(), INTERVAL 1 HOUR) GROUP BY sensor_id, DATE_FORMAT(measured_at, '%Y-%m-%d %H:00:00');", nativeQuery = true)
+    void calculateMeasurementSummary();
 
-    @Query("SELECT MSE.id,\n" +
-            "       MSE.sensor_id,\n" +
-            "       MSE.avg_value,\n" +
-            "       MSE.measured_at_per_hour\n" +
-            "FROM measurement_summary_entity AS MSE\n" +
-            "WHERE measured_at_per_hour >= DATE_SUB(NOW(), INTERVAL 1 WEEK)")
+    @Query(value = "SELECT MSE.id, MSE.sensor_id, MSE.avg_value, MSE.measured_at_per_hour FROM measurement_summary_entity AS MSE WHERE measured_at_per_hour >= DATE_SUB(NOW(), INTERVAL 1 WEEK) AND MSE.sensor_id = :sensorId AND MSE.user_id = :userId;", nativeQuery = true)
     List<MeasurementSummaryEntity> weeklyMeasurements(String userId, String sensorId);
 }

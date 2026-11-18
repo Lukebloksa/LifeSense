@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class SensorServiceImpl implements SensorService {
@@ -29,5 +30,13 @@ public class SensorServiceImpl implements SensorService {
         List<SensorEntity> sensors = new ArrayList<>();
         sensors.addAll(sensorRepository.findByUserId_Id(userId));
         return sensors;
+    }
+
+    @Override
+    public SensorEntity createSensor(String userId, SensorEntity sensor) {
+        SensorEntity newSensor = new SensorEntity();
+        newSensor.setId(UUID.randomUUID().toString());
+        newSensor.setName();
+        return null;
     }
 }

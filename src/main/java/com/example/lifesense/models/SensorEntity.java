@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 /**
-    * SensorEntity represents a sensor that belongs to a user. It contains information about the sensor's name, type, and unit of measurement.
+ * SensorEntity represents a sensor that belongs to a user. It contains information about the sensor's name, type, and unit of measurement.
  */
 
 @Entity
@@ -25,19 +25,15 @@ public class SensorEntity {
 
     private String unit;
 
-    @Column(name = "api_key")
-    private String apiKey;
-
     public SensorEntity() {
     }
 
-    public SensorEntity(String id, UserEntity user, String name, String type, String unit, String apiKey) {
+    public SensorEntity(String id, UserEntity user, String name, String type, String unit) {
         this.id = id;
         this.user = user;
         this.name = name;
         this.type = type;
         this.unit = unit;
-        this.apiKey = apiKey;
     }
 
     public String getId() {
@@ -78,13 +74,5 @@ public class SensorEntity {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
     }
 }
