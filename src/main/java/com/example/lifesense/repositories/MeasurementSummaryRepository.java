@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface MeasurementSummaryRepository extends JpaRepository<MeasurementSummaryEntity, Long> {
 
     @Modifying
@@ -14,4 +16,12 @@ public interface MeasurementSummaryRepository extends JpaRepository<MeasurementS
             "WHERE measured_at >= DATE_SUB(NOW(), INTERVAL 1 HOUR)\n" +
             "GROUP BY sensor_id, DATE_FORMAT(measured_at, '%Y-%m-%d %H:00:00');\n")
     MeasurementSummaryEntity calculateMeasurementSummary();
+
+    @Query("SELECT MSE.id,\n" +
+            "       MSE.sensor_id,\n" +
+            "       MSE.avg_value,\n" +
+            "       MSE.measured_at_per_hour\n" +
+            "FROM measurement_summary_entity AS MSE\n" +
+            "WHERE measured_at_per_hour >= DATE_SUB(NOW(), INTERVAL 1 WEEK)")
+    List<MeasurementSummaryEntity> weeklyMeasurements(String userId, String sensorId);
 }

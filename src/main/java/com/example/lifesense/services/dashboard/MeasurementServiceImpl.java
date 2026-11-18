@@ -37,6 +37,7 @@ public class MeasurementServiceImpl implements MeasurementService {
 
     @Override
     public List<MeasurementEntity> getWeeklyMeasurements(String userId, String sensorId) {
+
         return List.of();
     }
 

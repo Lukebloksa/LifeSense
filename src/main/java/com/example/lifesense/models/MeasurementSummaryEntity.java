@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+/*
+ * MeasurementSummaryEntity represents a summary of measurement - There will be average value per hour, max and min value in past hour
+ */
+
 @Entity
 public class MeasurementSummaryEntity {
 
