@@ -32,11 +32,11 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UserEntity user) {
-        UserEntity authenticatedUser = authService.login(user.getEmail(), user.getPassword());
-        if (authenticatedUser == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password").toString();
+    public ResponseEntity<String> login(@RequestBody UserEntity user) {
+        UserEntity authenticated = authService.login(user.getEmail(), user.getPassword());
+        if (authenticated == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
-        return jwtServiceImpl.generateToken(authenticatedUser.getEmail());
+        return ResponseEntity.ok(jwtServiceImpl.generateToken(authenticated.getEmail()));
     }
 }
