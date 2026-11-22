@@ -3,6 +3,7 @@ import Gear from "../../../assets/dropdownMenu/gear.svg";
 import House from "../../../assets/dropdownMenu/house.svg";
 import Leaf from "../../../assets/dropdownMenu/leaf.svg";
 import SignOut from "../../../assets/dropdownMenu/sign-out.svg";
+import {useAuth} from "../../../hooks/useAuth";
 
 type DropdownMenuProps = {
     isOpen: boolean;
@@ -10,6 +11,8 @@ type DropdownMenuProps = {
 
 function DropdownMenu({ isOpen }: DropdownMenuProps) {
     if (!isOpen) return null;
+
+    const { logout } = useAuth();
 
     return (
         <div className={styles.dropdownMenuContainer}>
@@ -33,7 +36,7 @@ function DropdownMenu({ isOpen }: DropdownMenuProps) {
                     </a>
                 </li>
                 <li className={styles.dropdownMenuItem}>
-                    <a href="/login" className={styles.dropdownMenuLink}>
+                    <a href="/login" onClick={logout} className={styles.dropdownMenuLink}>
                         <img src={SignOut} alt="Sign Out" className={styles.dropdownMenuIcon} />
                         <span className={styles.dropdownMenuText}>Sign Out</span>
                     </a>

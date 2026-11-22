@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MeasurementRepository extends JpaRepository<MeasurementEntity, Long> {
 
-    MeasurementEntity findBySensorId_User_IdAndSensorId_Id(String userId, String sensorId);
+    MeasurementEntity findFirstBySensorId_User_IdAndSensorId_IdOrderByMeasuredAtDesc(String userId, String sensorId);
 
     default MeasurementEntity findByUserId_IdAndSensorId_Id(String userId, String sensorId) {
-        return findBySensorId_User_IdAndSensorId_Id(userId, sensorId);
+        return findFirstBySensorId_User_IdAndSensorId_IdOrderByMeasuredAtDesc(userId, sensorId);
     }
 }

@@ -4,7 +4,10 @@ import com.example.lifesense.models.SensorEntity;
 import com.example.lifesense.repositories.MeasurementRepository;
 import com.example.lifesense.repositories.SensorRepository;
 import com.example.lifesense.repositories.UserRepository;
+import com.example.lifesense.models.UserEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +36,19 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public List<SensorEntity> getSensorsForUser(String userEmail) {
+        UserEntity user = userRepository.findByEmail(userEmail);
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+        return sensorRepository.findByUserId_Id(user.getId());
+    }
+
+    @Override
     public SensorEntity createSensor(String userId, SensorEntity sensor) {
         SensorEntity newSensor = new SensorEntity();
         newSensor.setId(UUID.randomUUID().toString());
-        newSensor.setName();
+//        newSensor.setName();
         return null;
     }
 }

@@ -2,7 +2,7 @@ import styles from './SensorCard.module.css'
 
 interface SensorCardProps {
     title: string;
-    value: number;
+    value: number | string;
     unit: string;
     isDark?: boolean;
 }
